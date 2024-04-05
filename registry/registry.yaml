@@ -1,0 +1,20 @@
+apiVersion: registry.apicur.io/v1
+kind: ApicurioRegistry
+metadata:
+  name: loyalty-schema-registry
+  namespace: loyalty
+spec:
+  configuration:
+    env:
+      - name: ROLE_BASED_AUTHZ_ENABLED
+        value: 'true'
+    kafkasql:
+      bootstrapServers: 'loyalty-cluster-kafka-bootstrap:9092'
+    persistence: kafkasql
+    security:
+      keycloak:
+        apiClientId: registry-client-api
+        realm: registry
+        uiClientId: registry-client-ui
+        url: >-
+          https://keycloak-loyalty.apps.cluster-5lhtq.dynamic.redhatworkshops.io/auth
