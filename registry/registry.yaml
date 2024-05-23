@@ -8,6 +8,8 @@ spec:
     env:
       - name: ROLE_BASED_AUTHZ_ENABLED
         value: 'true'
+      - name: CLIENT_CREDENTIALS_BASIC_CACHE_EXPIRATION
+        value: '4'
     kafkasql:
       bootstrapServers: 'loyalty-cluster-kafka-bootstrap:9092'
     persistence: kafkasql
@@ -17,4 +19,4 @@ spec:
         realm: registry
         uiClientId: registry-client-ui
         url: >-
-          https://keycloak-loyalty.apps.cluster-5lhtq.dynamic.redhatworkshops.io/auth
+          https://keycloak-loyalty.apps.cluster-hcv6s.dynamic.redhatworkshops.io/auth

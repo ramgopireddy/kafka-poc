@@ -12,7 +12,7 @@ oc create -f kafka-metrics.yaml
 #Create grafana instance
 oc create sa grafana-service-account -n loyalty
  
-oc apply -f grafana-crb.yaml -n loyalty
+oc apply -f grafana/grafana-crb.yaml -n loyalty
 
 oc create -f grafana/grafana-secret-sa.yaml
 
@@ -28,9 +28,11 @@ oc create -f grafana/grafana-deploy.yaml -n loyalty
 
 oc create route edge loyalty-grafana --service=grafana --namespace=loyalty
 
+# add the dashboards to grafana 
+
 # Add sso steps here
 oc create -f sso/sso.yaml
-oc create -f sso-realm.yaml
+oc create -f sso/sso-realm.yaml
 
 #create registry
 oc create -f registry/registry.yaml
